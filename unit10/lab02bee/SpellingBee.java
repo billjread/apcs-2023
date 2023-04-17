@@ -9,10 +9,13 @@ public class SpellingBee {
     private char[] letters;
     private char mustUse;
 
-    // TODO construct me!
+    public SpellingBee(char[] l, char mU) {
+        letters = l;
+        mustUse = mU;
+    }
 
     public boolean checkWord(String word) {
-        // TODO implement me!
+        
         return true;
     }
 
