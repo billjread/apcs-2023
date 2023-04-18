@@ -39,7 +39,7 @@ public class WordPairList {
      * Precondition: words.length >= 2
      */
     public WordPairList(String[] words) {
-        /* to be implemented in part (a) */
+        allPairs = words[];
     }
 
     /**
