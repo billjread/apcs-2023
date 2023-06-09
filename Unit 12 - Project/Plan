@@ -1,0 +1,59 @@
+The Box
+
+Box Layout:
+@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @       Benefits:
+@                                         @          - Enlarge Box (2D Arrays)
+@                                         @          - Increase Spawn-rate (Java Timer)
+@           +                             @          - Decrease Despawn-rate (Java Timers)
+@                                         @          - Buy Collectors (Scanners)
+@                                +        @
+@                                         @
+@                                         @
+@                                         @
+@                                         @
+@                           B             @
+@       *                                 @
+@                                         @
+@                                         @
+@                                         @
+@                                  +      @
+@                                         @
+@                 .                       @
+@       bbb                               @
+@ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @
+
+
+Item Descriptions:
+(.) - Worth 1 Point; Most Commom Spawner; Least Valuable
+(+) - Worth 4 Points; Common Spawner; Valuable
+(*) - Worth 8 Points; Least Common Spawner; Most Valuable
+(B) - Player; Can Move in all 4 Directions; Controlled by the Player
+(b) - Collector; Spawned in by the Player; Collects any points spawned on them
+(@) - Border; The Player Cannot Touch
+
+
+From Least to Most Valuable:
+.
+
++
+
+*
+
+Store Layout:
+------------------------------------------------------------------
+Your Wallet: X Points
+------------------------------------------------------------------
+
+Collector (b): X Points (Enter "/c" to Purchase)
+
+Increase Border (down): X Points (Enter "/d" to Purchase)
+
+Increase Border (left): X Points (Enter "/l" to Purchase)
+
+Increase Spawn-rate (.+*): X Points (Enter "/s" to Purchase)
+
+Decrease Despawn-rate (.+*): X points (Enter "/ds" to Purchase)
+
+------------------------------------------------------------------
+
+Code Plan:
