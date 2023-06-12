@@ -22,7 +22,7 @@ public class ArrayResizer {
             if (ArrayResizer.isNonZeroRow(array2D, r))
                 count++;
         }
-        return count;
+        return count; 
     }
 
     public static int[][] resize(int[][] array2D) {
