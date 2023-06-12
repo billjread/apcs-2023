@@ -46,8 +46,12 @@ public class ReviewAnalysis {
      * No element of allReviews is null.
      */
     public double getAverageRating() {
-        /* to be implemented in part (a) */
-        return -1; // replace me!
+       int sum = 0;
+       
+       for(int i = 0; i < allReviews.length; i++) {
+          sum += allReviews[i].getRating();
+       }
+       return sum/ (double) allReviews.length;
     }
 
     /**
@@ -57,10 +61,37 @@ public class ReviewAnalysis {
      * No element of allReviews is null.
      * Postcondition: allReviews is unchanged.
      */
+     
+     
+     
+     
+     
     public ArrayList<String> collectComments() {
-        /* to be implemented in part (b) */
-        return null; // replace me!
+       ArrayList<String> collection = new ArrayList<String>();
+       for(int i = 0; i < allReviews.length; i++) {
+          String comment = allReviews[i].getComment();
+          int rating = allReviews[i].getRating();
+          
+          if(comment.indexOf("!") >= 0) {
+             String combined = i + "-" + comment;
+             String ending = combined.substring(combined.length() - 1);
+             if(ending.equals("!") == false && ending.equals(".") == false) {
+                combined += ".";
+             }
+             collection.add(combined);
+          }
+       }
+       
+       return collection;
     }
+
+
+
+
+
+
+
+
 
     public static void check(boolean test) throws AssertionError {
         if (!test)

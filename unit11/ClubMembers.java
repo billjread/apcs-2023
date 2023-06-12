@@ -43,19 +43,50 @@ public class ClubMembers {
     }
 
     public void addMembers(String[] names, int gradYear) {
-        // TODO a
+        for(int i = 0; i < names.length; i++) {
+           String name = names[i];
+           members.add(new MemberInfo(name, gradYear, true));
+        }
 
     }
 
     public ArrayList<MemberInfo> removeMembers(int year) {
-        // TODO b;
-        return null; // replace me
+        ArrayList<MemberInfo> goodStanders = new ArrayList<MemberInfo>();
+        int i = 0;
+        while(i < members.size()) {
+           if(members.get(i).getGradYear() <= year) {
+              MemberInfo removed = members.remove(i);
+              if(removed.inGoodStanding() == true) {
+                 goodStanders.add(removed);
+              }
+           }
+           else {
+              i++;
+           }
+        }
+        return goodStanders;
     }
 
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
     public static void check(boolean test) throws AssertionError {
         if (!test)
             throw new AssertionError("sad panda");
     }
+
 
     public static void main(String[] args) {
         MemberInfo[] folks = {
