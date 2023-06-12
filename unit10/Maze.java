@@ -7,68 +7,63 @@ public class Maze {
     private boolean solution;
     private char[][] maze;
 
-    /**
-     * Instantiates a Maze instance based on the provided arguments
-     * 
-     * @param rows the number of rows
-     * @param cols the number of columns
-     * @param line the values to be placed in the maze.
-     */
     public Maze(int rows, int cols, String line) {
-        // TODO part a
+       maze = new char[rows][cols];
+       int num = 0;
+       
+       for(int r = 0; r < maze.length; r++){
+          for(int c = 0; c < maze[0].length; c++){
+             maze[r][c] = line.charAt(num);
+             num++;
+          }
+       }
+
+
+
 
     }
 
-    /**
-     * @return the starting coordinates as "r c"
-     */
-    public String getStart() { /* Not shown, plz ignore implementation */
-        int z = Arrays.stream(maze).map(String::new).collect(Collectors.joining("")).indexOf('@');
-        return "" + z / maze[0].length + " " + z % maze[0].length;
+    public String getStart() {
+                                                                                                                           int z = Arrays.stream(maze).map(String::new).collect(Collectors.joining("")).indexOf('@');
+                                                                                                                                 return "" + z / maze[0].length + " " + z % maze[0].length;
     }
 
-    /**
-     * @return the ending coordinates as "r c"
-     */
-    public String getEnd() { /* Not shown, plz ignore implementation */
-        int z = Arrays.stream(maze).map(String::new).collect(Collectors.joining("")).indexOf('$');
-        return "" + z / maze[0].length + " " + z % maze[0].length;
+    public String getEnd() {
+                                                                                                                                 int z = Arrays.stream(maze).map(String::new).collect(Collectors.joining("")).indexOf('$');
+                                                                                                                           return "" + z / maze[0].length + " " + z % maze[0].length;
     }
 
-    /**
-     * Uses recursion to see if the maze has a solution or not.
-     * 
-     * Suggested algorithm:
-     * if R and C are in bounds and spot is !#
-     * - if you are at $:
-     * - - set has a solution
-     * - else:
-     * - - mark spot as checked
-     * - - recur up
-     * - - recur down
-     * - - recur left
-     * - - recur right
-     * 
-     * @param r current row index
-     * @param c current column index
-     */
-    private void check(int r, int c) {
-        // TODO part b
-
+      private void check(int r, int c) {
+         if(r >= 0 && r < maze.length && c >= 0 && c < maze[0].length && maze[r][c] != '#'){
+            if(maze[r][c] == 'v') {
+               return;
+            }
+            
+            if(maze[r][c] == '$'){
+               solution = true;
+            }
+            
+            else {
+               maze[r][c] = 'v';
+               check(r, c+1);
+               check(r+1, c);
+               check(r, c-1);
+               check(r-1, c);
+               maze[r][c] = '.';
+            }
+         }
     }
 
-    /**
-     * Determines if there is a solution (a path of '.') for this maze.
-     * 
-     * @return true if the maze has a path from Start (@) to End ($).
-     */
-    public boolean hasSolution() {
-        // TODO part c
-        return false; // replace me!
-
+     public boolean hasSolution() {
+        String start = getStart();
+        String[] starter = start.split(" ");
+        int rowCoord = Integer.parseInt(starter[0]);
+        int colCoord = Integer.parseInt(starter[1]);
+        check(rowCoord, colCoord);
+        return solution;
     }
 
-    // HINT overriding toString may be handy. :)
+
 
     public static void check(boolean test) throws AssertionError {
         if (!test)
