@@ -1,6 +1,7 @@
 package unit10;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Scramble {
 
@@ -75,11 +76,20 @@ public class Scramble {
 
     /**
      * TODO how does this function work?
+     * This function works by taking the first value in the array and comparing it with all of the
+       other array integer until it finds one smaller. It them swaps them and continues the process
+       with the next integer in the array.
      * 
      * @param arr array of integers to shuffle
      */
     public static void shuffle(int arr[]) {
-        // TODO
+       Random random = new Random();
+       for(int i = 0; i < arr.length; i++) {
+          int randomVal = random.nextInt(i + 1);
+          int randomInt = arr[randomVal];
+          arr[randomVal] = arr[i];
+          arr[i] = randomInt;
+       }
     }
 
     public static void main(String args[]) {
